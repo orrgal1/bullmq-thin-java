@@ -1,4 +1,4 @@
-name: Gradle Build and Deploy to GitHub Packages
+name: Gradle Build, Version, and Deploy to GitHub Packages
 
 on:
   push:
@@ -14,10 +14,12 @@ jobs:
     permissions:
       contents: write
       packages: write
-          
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Ensure full history is fetched for tags
 
       - name: Set up JDK
         uses: actions/setup-java@v4
@@ -34,6 +36,29 @@ jobs:
           key: gradle-cache-${{ runner.os }}-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
           restore-keys: |
             gradle-cache-${{ runner.os }}-
+
+      - name: Install Cocogitto
+        run: |
+          curl -sSL https://install.cog.rs | sh
+          export PATH=$HOME/.cargo/bin:$PATH
+
+      - name: Check Conventional Commits Since Last Tag
+        run: cog check --from-tag $(git describe --tags --abbrev=0 HEAD^)
+
+      - name: Bump Version from Last Tag
+        run: cog bump --from-tag $(git describe --tags --abbrev=0 HEAD^)
+        id: version_bump
+
+      - name: Commit and Push Version Changes
+        if: ${{ steps.version_bump.outputs.version != '' }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add CHANGELOG.md VERSION build.gradle* cog.toml
+          git commit -m "ci: bump version to ${{ steps.version_bump.outputs.version }}"
+          git push origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build with Gradle
         run: ./gradlew build
