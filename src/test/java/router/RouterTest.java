@@ -50,6 +50,7 @@ public class RouterTest {
                 .withEnv("BROKER_PORT", "5050")
                 .withEnv("DEBUG", "*")
                 .waitingFor(new LogMessageWaitStrategy().withRegEx(".*Broker server started on port.*"))
+                .withExtraHost("host.docker.internal", "host-gateway")
                 .withNetwork(sharedNetwork);
         brokerContainer.start();
 
