@@ -21,6 +21,11 @@ jobs:
         with:
           fetch-depth: 0 # Ensure full history is fetched for tags
 
+      - name: Conventional commits check
+        uses: oknozor/cocogitto-action@v3
+        with:
+          check-latest-tag-only: true
+
       - name: Set up JDK
         uses: actions/setup-java@v4
         with:
@@ -37,25 +42,18 @@ jobs:
           restore-keys: |
             gradle-cache-${{ runner.os }}-
 
-      - name: Install Cocogitto
-        run: |
-          curl -sSL https://install.cog.rs | sh
-          echo 'export PATH="$HOME/.cargo/bin:$PATH"' >> $GITHUB_ENV
-
-      - name: Check Conventional Commits Since Last Tag
-        run: cog check --from-tag $(git describe --tags --abbrev=0 HEAD^)
-
-      - name: Bump Version from Last Tag
-        run: cog bump --from-tag $(git describe --tags --abbrev=0 HEAD^)
-        id: version_bump
+      - name: Semver release
+        uses: oknozor/cocogitto-action@v3
+        with:
+          release: true
 
       - name: Commit and Push Version Changes
-        if: ${{ steps.version_bump.outputs.version != '' }}
+        if: ${{ steps.release.outputs.version != '' }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add CHANGELOG.md VERSION build.gradle* cog.toml
-          git commit -m "ci: bump version to ${{ steps.version_bump.outputs.version }}"
+          git commit -m "ci: bump version to ${{ steps.release.outputs.version }}"
           git push origin main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
