@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group = 'org.orrgal1'
+group = 'com.github.orrgal1'
 version = '1.0-SNAPSHOT'
 
 repositories {
@@ -29,4 +29,22 @@ test {
 tasks.withType(JavaCompile) {
     sourceCompatibility = '17'
     targetCompatibility = '17'
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            name = 'GitHubPackages'
+            url = uri("https://maven.pkg.github.com/${System.getenv('REPOSITORY_OWNER')}/${System.getenv('REPOSITORY_NAME')}")
+            credentials {
+                username = System.getenv('GITHUB_ACTOR')
+                password = System.getenv('GITHUB_TOKEN')
+            }
+        }
+    }
 }
