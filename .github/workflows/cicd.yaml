@@ -40,7 +40,7 @@ jobs:
       - name: Install Cocogitto
         run: |
           curl -sSL https://install.cog.rs | sh
-          export PATH=$HOME/.cargo/bin:$PATH
+          echo 'export PATH="$HOME/.cargo/bin:$PATH"' >> $GITHUB_ENV
 
       - name: Check Conventional Commits Since Last Tag
         run: cog check --from-tag $(git describe --tags --abbrev=0 HEAD^)
