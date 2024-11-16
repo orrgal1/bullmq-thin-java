@@ -1,7 +1,5 @@
 ignore_merge_commits = true
 
-[version]
-file = "VERSION"
 
 pre_bump_hooks = [
     "echo {{version}}",
