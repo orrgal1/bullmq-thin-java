@@ -75,7 +75,7 @@ public class RouterTest {
                 });
                 results.add(body.get("a") + body.get("b"));
                 res.status(200);
-                System.out.println("Got result");
+                System.out.println(">>>>>>>>> Got result <<<<<<<<<");
                 return "OK";
             } catch (JsonProcessingException e) {
                 throw new RuntimeException(e);
@@ -87,6 +87,7 @@ public class RouterTest {
 
         while (results.size() < 2) {
             Thread.sleep(1000);
+            System.out.println(">>>>>>>>> Got results: " + results.size() + "<<<<<<<<<");
         }
         assertEquals(3, (int) results.get(0), "The result of 1 + 2 should be 3.");
         assertEquals(3, (int) results.get(1), "The result of 1 + 2 should be 3.");
