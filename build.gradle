@@ -43,7 +43,7 @@ publishing {
     publications {
         mavenJava(MavenPublication) {
             from components.java
-            artifactId = 'bullmqthinjava'
+            artifactId = 'bullmqthinclient'
         }
     }
     repositories {
