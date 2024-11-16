@@ -1,39 +1,12 @@
-[conventional]
-# The types of conventional commits your project supports.
-# Each type can be configured to specify if it should trigger a version bump, and if so, which type of bump.
-types = [
-    { name = "feat", bump = "minor", description = "A new feature" },
-    { name = "fix", bump = "patch", description = "A bug fix" },
-    { name = "chore", bump = "none", description = "Changes that do not affect the meaning of the code" },
-    { name = "docs", bump = "none", description = "Documentation changes" },
-    { name = "style", bump = "none", description = "Changes that do not affect the code's functionality" },
-    { name = "refactor", bump = "patch", description = "Code changes that neither fix a bug nor add a feature" },
-    { name = "perf", bump = "patch", description = "Performance improvements" },
-    { name = "test", bump = "none", description = "Adding missing tests or correcting existing tests" }
+ignore_merge_commits = true
+
+
+pre_bump_hooks = [
+    "echo {{version}}",
 ]
 
-# Configuration related to generating a changelog.
-[changelog]
-# The path where the changelog will be written.
-path = "CHANGELOG.md"
 
-# Template for commit messages that will be used in the changelog.
-template = """
-# Changelog
-
-{{#versions}}
-## {{name}} - {{date}}
-{{#commits}}
-- **{{type}}**: {{header}} ({{scope}})
-{{/commits}}
-
-{{/versions}}
-"""
-
-# Configuration related to version tagging.
-[version]
-# The prefix to use when tagging a new version.
-tag_prefix = "v"
-
-# Whether to include a `v` prefix in your version tags (e.g., `v1.0.0`).
-prefix = true
+post_bump_hooks = [
+    "git push",
+    "git push origin {{version}}",
+]
