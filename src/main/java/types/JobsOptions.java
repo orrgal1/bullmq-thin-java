@@ -1,8 +1,9 @@
 package types;
 
-class JobsOptions extends BaseJobOptions {
+public class JobsOptions extends BaseJobOptions {
     /**
      * Debounce options.
+     *
      * @deprecated use deduplication option
      */
     private DebounceOptions debounce;

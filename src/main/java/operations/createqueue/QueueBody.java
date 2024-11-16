@@ -2,12 +2,12 @@ package operations.createqueue;
 
 import types.QueueOptions;
 
-public class CreateQueueBody {
+public class QueueBody {
     private String name;
     private QueueOptions opts;
 
     // Constructor
-    public CreateQueueBody(String name, QueueOptions opts) {
+    public QueueBody(String name, QueueOptions opts) {
         this.name = name;
         this.opts = opts;
     }

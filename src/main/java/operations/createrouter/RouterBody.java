@@ -5,14 +5,14 @@ import types.RouterOptions;
 
 import java.util.List;
 
-public class CreateRouterBody {
+public class RouterBody {
     private String name;
     private List<String> sources;
     private List<Target> targets;
     private RouterOptions opts;
 
     // Constructor
-    public CreateRouterBody(String name, List<String> sources, List<Target> targets, RouterOptions opts) {
+    public RouterBody(String name, List<String> sources, List<Target> targets, RouterOptions opts) {
         this.name = name;
         this.sources = sources;
         this.targets = targets;

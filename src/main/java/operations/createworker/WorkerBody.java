@@ -2,13 +2,13 @@ package operations.createworker;
 
 import types.WorkerOptions;
 
-public class CreateWorkerBody {
+public class WorkerBody {
     private String name;
     private WorkerOptions opts;
     private String callback;
 
     // Constructor
-    public CreateWorkerBody(String name, WorkerOptions opts, String callback) {
+    public WorkerBody(String name, WorkerOptions opts, String callback) {
         this.name = name;
         this.opts = opts;
         this.callback = callback;
