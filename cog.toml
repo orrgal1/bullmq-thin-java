@@ -9,6 +9,9 @@ pre_bump_hooks = [
 
 
 post_bump_hooks = [
+    "echo {{version}} > VERSION", # Update the VERSION file
+    "git add VERSION",
+    "git commit -m 'ci: update VERSION file to {{version}}'",
     "git push",
     "git push origin {{version}}",
 ]
