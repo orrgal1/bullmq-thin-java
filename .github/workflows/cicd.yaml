@@ -33,7 +33,7 @@ jobs:
             gradle-cache-${{ runner.os }}-
 
       - name: Build with Gradle
-        run: ./gradlew build
+        run: ./gradlew build --info --stacktrace
 
       - name: Publish to GitHub Packages
         run: ./gradlew publish
