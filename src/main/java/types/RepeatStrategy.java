@@ -1,4 +1,4 @@
-package bullmqtypes;
+package types;
 
 // Assuming RepeatStrategy and BackoffStrategy are defined elsewhere
 interface RepeatStrategy {

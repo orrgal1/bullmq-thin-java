@@ -1,4 +1,4 @@
-package operations.createRouter;
+package operations.createworker;
 
 public class CreateWorkerResponse {
     private final Boolean running;

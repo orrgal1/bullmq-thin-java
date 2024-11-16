@@ -1,6 +1,6 @@
-package operations.createRouter;
+package operations.createworker;
 
-import bullmqtypes.WorkerOptions;
+import types.WorkerOptions;
 
 public class CreateWorkerBody {
     private String name;

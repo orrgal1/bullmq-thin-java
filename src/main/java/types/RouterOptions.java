@@ -1,4 +1,4 @@
-package bullmqtypes;
+package types;
 
 import java.util.function.Function;
 

@@ -1,4 +1,4 @@
-package bullmqtypes;
+package types;
 
 public class WorkerOptions extends QueueBaseOptions  {
 

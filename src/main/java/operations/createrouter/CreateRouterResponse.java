@@ -1,9 +1,9 @@
-package operations.createWorker;
+package operations.createrouter;
 
-public class CreateWorkerResponse {
+public class CreateRouterResponse {
     private final Boolean running;
 
-    public CreateWorkerResponse(Boolean running) {
+    public CreateRouterResponse(Boolean running) {
         this.running = running;
     }
 

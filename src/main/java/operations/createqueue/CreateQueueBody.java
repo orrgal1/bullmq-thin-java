@@ -1,6 +1,6 @@
 package operations.createqueue;
 
-import bullmqtypes.QueueOptions;
+import types.QueueOptions;
 
 public class CreateQueueBody {
     private String name;

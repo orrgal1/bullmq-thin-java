@@ -4,5 +4,32 @@
     <inspection_tool class="AutoCloseableResource" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="METHOD_MATCHER_CONFIG" value="java.util.Formatter,format,java.io.Writer,append,com.google.common.base.Preconditions,checkNotNull,org.hibernate.Session,close,java.io.PrintWriter,printf,java.io.PrintStream,printf,java.lang.foreign.Arena,ofAuto,java.lang.foreign.Arena,global,org.apache.hc.client5.http.impl.classic.HttpClients,createDefault" />
     </inspection_tool>
+    <inspection_tool class="VulnerableLibrariesLocal" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="isIgnoringEnabled" value="true" />
+      <option name="ignoredModules">
+        <list>
+          <option value="bullmq-thin-java" />
+          <option value="bullmq-thin-java" />
+          <option value="bullmq-thin-java" />
+          <option value="bullmq-thin-java" />
+        </list>
+      </option>
+      <option name="ignoredPackages">
+        <list>
+          <option value="org.eclipse.jetty:jetty-http:9.4.48.v20220622" />
+          <option value="org.eclipse.jetty:jetty-server:9.4.48.v20220622" />
+          <option value="org.eclipse.jetty:jetty-xml:9.4.48.v20220622" />
+          <option value="org.apache.commons:commons-compress:1.22" />
+        </list>
+      </option>
+      <option name="ignoredReasons">
+        <list>
+          <option value="Not exploitable" />
+          <option value="Not exploitable" />
+          <option value="Not exploitable" />
+          <option value="Not exploitable" />
+        </list>
+      </option>
+    </inspection_tool>
   </profile>
 </component>

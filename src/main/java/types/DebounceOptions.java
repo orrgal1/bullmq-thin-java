@@ -1,4 +1,4 @@
-package bullmqtypes;
+package types;
 
 class DebounceOptions {
     /**

@@ -1,4 +1,4 @@
-package bullmqtypes;
+package types;
 
 class BaseJobOptions extends DefaultJobOptions {
     /**
@@ -19,8 +19,6 @@ class BaseJobOptions extends DefaultJobOptions {
      * already exists, it will not be added.
      */
     private String jobId;
-
-    private ParentOptions parent;
 
     /**
      * Internal property used by repeatable jobs.
@@ -51,15 +49,7 @@ class BaseJobOptions extends DefaultJobOptions {
     public void setJobId(String jobId) {
         this.jobId = jobId;
     }
-
-    public ParentOptions getParent() {
-        return parent;
-    }
-
-    public void setParent(ParentOptions parent) {
-        this.parent = parent;
-    }
-
+    
     public Long getPrevMillis() {
         return prevMillis;
     }
