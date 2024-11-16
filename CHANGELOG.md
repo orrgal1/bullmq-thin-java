@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## 0.0.3 - 2024-11-16
+#### Bug Fixes
+- publishing - (51d7892) - org
+
+- - -
+
 ## 0.0.2 - 2024-11-16
 #### Bug Fixes
 - publishing - (1ab11fc) - org
