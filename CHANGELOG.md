@@ -2,6 +2,14 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## 0.0.5 - 2024-11-16
+#### Bug Fixes
+- publishing - (049a897) - org
+#### Continuous Integration
+- update VERSION file to 0.0.4 - (45dad37) - cog-bot
+
+- - -
+
 ## 0.0.4 - 2024-11-16
 #### Bug Fixes
 - publishing - (1e62072) - org
