@@ -44,6 +44,7 @@ jobs:
 
       - name: Semver release
         uses: oknozor/cocogitto-action@v3
+        id: release
         with:
           release: true
           check-latest-tag-only: true
